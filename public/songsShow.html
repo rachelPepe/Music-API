@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Song</title>
+    <script>
+        addEventListener("DOMContentLoaded", async function() {
+            const response = await fetch("/api/songs");
+            const songs = await response.json();
+                
+            let html = "";
+            for (let song of songs) {
+                html += `<li>${song.title} - ${song.artist}</li>`;
+            }
+
+            document.querySelector("ul").innerHTML = html;
+        });
+    </script>
+  </head>
+  <body>
+    <h1>Songs</h1>
+    <ul>
+       <!-- JS will populate list of songs in DB-->
+    </ul>
+ </body>
+</html>
